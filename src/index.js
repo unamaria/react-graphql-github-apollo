@@ -12,8 +12,6 @@ import './style.css';
 
 const GITHUB_BASE_URL = 'https://api.github.com/graphql';
 
-const cache = new InMemoryCache();
-
 const httpLink = new HttpLink({
   uri: GITHUB_BASE_URL,
   headers: {
@@ -23,12 +21,12 @@ const httpLink = new HttpLink({
   },
 });
 
-// eslint-disable-next-line no-unused-vars
+const cache = new InMemoryCache();
+
 const client = new ApolloClient({
   link: httpLink,
   cache,
 });
-
 ReactDOM.render(
   <ApolloProvider client={client}>
     <App />
